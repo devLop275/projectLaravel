@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Hike;
+use App\Models\Favorite;
 
 class User extends Authenticatable
 {
@@ -22,6 +24,16 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+     
+    public function hikes()
+    {
+        return $this->hasMany(Hike::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
